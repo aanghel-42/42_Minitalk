@@ -5,36 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/31 18:47:45 by aanghel           #+#    #+#              #
-#    Updated: 2022/03/31 19:56:10 by pcatapan         ###   ########.fr        #
+#    Created: 2022/01/24 17:24:57 by pcatapan          #+#    #+#              #
+#    Updated: 2022/01/28 08:45:01 by pcatapan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-N_SERVER = server
+NAME = libftprintf.a
 
-N_CLIENT = client
+SRCS = ft_printf.c \
+		ft_unsigned.c \
+		ft_esadecimal.c \
+		ft_putnumber.c \
+		ft_putesa.c \
+		ft_char.c \
 
-CC = gcc
+OBJS = ${SRCS:.c=.o}
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+INCS = .
+LIBC = ar -rcs
 
-FLAGS = -Wall -Werror -Wextra
+.c.o :
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+	
+$(NAME) : ${OBJS}
+	${LIBC} ${NAME} ${OBJS}
+	
+all: $(NAME)
 
-all: $(N_SERVER) $(N_CLIENT)
-
-$(N_SERVER) :
-			$(CC) $(FLAGS) server.c -o $(N_SERVER)
-
-$(N_CLIENT) :
-			$(CC) $(FLAGS) client.c -o $(N_CLIENT)
-
-norm:
-	norminette -R *.c
-
-clean: 
-		rm -f *.o
-
-fclean: clean
-		rm -f $(N_SERVER) $(N_CLIENT)
-
+fclean:  clean
+	$(RM) $(NAME)
+	
+clean:
+	$(RM) -f $(OBJS)
+	
 re: fclean all
 
-.PHONY : all clean fclean re norm
+.PHONY: all clean fclean re .c.o

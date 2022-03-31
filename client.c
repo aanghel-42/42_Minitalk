@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 18:03:32 by aanghel           #+#    #+#             */
-/*   Updated: 2022/03/31 18:27:49 by aanghel          ###   ########.fr       */
+/*   Updated: 2022/03/31 20:26:26 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_check_pid(char *pid)
 	{
 		if (!(pid[i] >= 48 && pid[i] <= 57))
 		{
-			ft_printf("ERROR : Invalid PID!\n");
+			printf("ERROR : Invalid PID!\n");
 			return (1);
 		}
 		i++;
@@ -44,19 +44,43 @@ int	ft_check_pid(char *pid)
 	return (0);
 }
 
-void	ft_send_message(char *message, pid_t pid)
+int	ft_send_char(char lett, int pid)
 {
-	char	c;
-	int		i;
+	int	i;
+	int	res;
 
 	i = 0;
-	c = message[i];
-	if (c >> i & 1)
-		kill(pid, SIGUSR1);
+	res = 0;
+	while (i < 8)
+	{
+		usleep(42);
+		if (lett & 1)
+			res += kill(pid, SIGUSR1);
+		else
+			res += kill(pid, SIGUSR2);
+		lett = lett >> 1;
+		i++;
+	}
+	return (res);
+}
+
+void	ft_send_message(char *message, pid_t pid)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	res = 0;
+	while (message[i])
+	{
+		res += ft_send_char(message[i], pid);
+		i++;
+	}
+	res += ft_send_char('\0', pid);
+	if (res == 0)
+		printf("GOOD : Message received\n");
 	else
-		kill(pid, SIGUSR2);
-	i++;
-	c = '\0';
+		printf("ERROR : Something went wrong!\n");
 }
 
 int	main(int argc, char **argv)
@@ -65,7 +89,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_printf("ERROR : Invalid number of arguments!\n");
+		printf("ERROR : Invalid number of arguments!\n");
 		return (0);
 	}
 	if (ft_check_pid(argv[1]) == 1)

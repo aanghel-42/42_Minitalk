@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 19:23:05 by pcatapan          #+#    #+#             */
-/*   Updated: 2022/03/31 19:26:20 by pcatapan         ###   ########.fr       */
+/*   Created: 2022/01/27 16:19:34 by pcatapan          #+#    #+#             */
+/*   Updated: 2022/01/28 08:45:03 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include "./PRINTF/ft_printf.h"
-# include <unistd.h>
 # include <stdlib.h>
-# include <signal.h>
 # include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
+
+int				ft_printf(const char *str, ...);
+int				ft_char(char lett);
+unsigned int	ft_lenunsi(unsigned int num);
+int				ft_unsigned(unsigned int num);
+unsigned int	ft_esadecimal(unsigned int num, char lett);
+int				ft_putnumber(int num);
+int				ft_lenesa(uintptr_t nb);
+int				ft_putesa(uintptr_t num);
 
 #endif

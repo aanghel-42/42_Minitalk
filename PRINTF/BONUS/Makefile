@@ -5,36 +5,47 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/31 18:47:45 by aanghel           #+#    #+#              #
-#    Updated: 2022/03/31 19:56:10 by pcatapan         ###   ########.fr        #
+#    Created: 2022/02/02 17:15:08 by pcatapan          #+#    #+#              #
+#    Updated: 2022/02/09 19:45:43 by pcatapan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-N_SERVER = server
+NAME = libftprintf.a
 
-N_CLIENT = client
+SRCS =	ft_printf.c		\
+		ft_putnb.c		\
+		ft_printf_utils.c\
+		ft_put_p.c		\
 
-CC = gcc
+SRCS_B =	ft_printf.c		\
+			ft_putnb.c		\
+			ft_printf_utils.c\
+			ft_put_p.c		\
 
-FLAGS = -Wall -Werror -Wextra
+OBJS = ${SRCS:.c=.o}
+OBJS_B = ${SRCS_B:.c=.o}
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+INCS = .
+LIBC = ar -rcs
 
-all: $(N_SERVER) $(N_CLIENT)
+.c.o :
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+	
+$(NAME) : ${OBJS}
+	${LIBC} ${NAME} ${OBJS}
+	
+all: $(NAME)
 
-$(N_SERVER) :
-			$(CC) $(FLAGS) server.c -o $(N_SERVER)
+bonus: $(NAME) $(OBJS_B)
+	${LIBC} $(NAME) $(OBJS_B)
 
-$(N_CLIENT) :
-			$(CC) $(FLAGS) client.c -o $(N_CLIENT)
-
-norm:
-	norminette -R *.c
-
-clean: 
-		rm -f *.o
-
-fclean: clean
-		rm -f $(N_SERVER) $(N_CLIENT)
-
+fclean:  clean
+	$(RM) $(NAME) $(bonus)
+	
+clean:
+	$(RM) -f $(OBJS) $(OBJS_B)
+	
 re: fclean all
 
-.PHONY : all clean fclean re norm
+.PHONY: all bonus clean fclean re .c.o
