@@ -6,7 +6,7 @@
 /*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 18:03:32 by aanghel           #+#    #+#             */
-/*   Updated: 2022/03/31 20:26:26 by pcatapan         ###   ########.fr       */
+/*   Updated: 2022/03/31 22:07:55 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_send_message(char *message, pid_t pid)
 	}
 	res += ft_send_char('\0', pid);
 	if (res == 0)
-		printf("GOOD : Message received\n");
+		printf("GOOD : Message sending\n");
 	else
 		printf("ERROR : Something went wrong!\n");
 }
