@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+         #
+#    By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/01/24 17:24:57 by pcatapan          #+#    #+#              #
-#    Updated: 2022/01/28 08:45:01 by pcatapan         ###   ########.fr        #
+#    Created: 2022/01/29 14:37:59 by aanghel           #+#    #+#              #
+#    Updated: 2022/02/07 23:50:31 by aanghel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c \
-		ft_unsigned.c \
-		ft_esadecimal.c \
-		ft_putnumber.c \
+SRCS =	ft_printf.c \
+		ft_u.c \
+		ft_esa.c \
+		ft_putnbr.c \
 		ft_putesa.c \
 		ft_char.c \
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_esadecimal.c                                    :+:      :+:    :+:   */
+/*   ft_esa.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 22:01:45 by pcatapan          #+#    #+#             */
-/*   Updated: 2022/01/28 08:16:38 by pcatapan         ###   ########.fr       */
+/*   Created: 2022/01/29 13:57:14 by aanghel           #+#    #+#             */
+/*   Updated: 2022/02/07 23:49:08 by aanghel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	ft_digitlower(unsigned int nb, char *base)
 	}
 }
 
-unsigned int	ft_esadecimal(unsigned int num, char lett)
+unsigned int	ft_esa(unsigned int num, char lett)
 {
-	int	count;
+	int		count;
 	char	*base;
 
 	count = ft_lenesa(num);

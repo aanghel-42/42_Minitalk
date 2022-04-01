@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:58:31 by aanghel           #+#    #+#             */
-/*   Updated: 2022/03/31 20:21:38 by pcatapan         ###   ########.fr       */
+/*   Updated: 2022/04/01 00:37:25 by aanghel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	ft_print_message(int sig)
 	if (i == 8)
 	{
 		if (c == '\0')
-			printf("\n");
+			ft_printf("\n");
 		else
-			printf("%c", c);
+			ft_printf("%c", c);
 		i = 0;
 		c = 0;
 	}
@@ -37,13 +37,13 @@ int	main(int argc, char	**argv)
 
 	if (argc != 1)
 	{
-		printf("ERROR : Invalid numer of arguments!\n");
+		ft_printf("ERROR : Invalid numer of arguments!\n");
 		return (0);
 	}
 	if (argv[0])
 		;
 	pid = getpid();
-	printf("The server PID is %d\n", pid);
+	ft_printf("The server PID is %d\n", pid);
 	signal(SIGUSR1, ft_print_message);
 	signal(SIGUSR2, ft_print_message);
 	while (1)

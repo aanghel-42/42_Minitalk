@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 19:09:00 by pcatapan          #+#    #+#             */
-/*   Updated: 2022/01/28 03:06:53 by pcatapan         ###   ########.fr       */
+/*   Created: 2022/01/29 13:55:55 by aanghel           #+#    #+#             */
+/*   Updated: 2022/02/07 23:49:38 by aanghel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_char(char lett)
+int	ft_char(int lett)
 {
-	write (1, &lett, 1);
+	write(1, &lett, 1);
 	return (1);
 }

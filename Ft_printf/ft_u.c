@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned.c                                      :+:      :+:    :+:   */
+/*   ft_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 21:54:08 by pcatapan          #+#    #+#             */
-/*   Updated: 2022/01/28 08:10:20 by pcatapan         ###   ########.fr       */
+/*   Created: 2022/01/29 14:33:48 by aanghel           #+#    #+#             */
+/*   Updated: 2022/02/07 23:46:55 by aanghel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_digitunsi(unsigned int nb)
+static void	ft_digitu(unsigned int nb)
 {
 	int	n;
 
 	if (nb >= 10)
 	{
-		ft_digitunsi(nb / 10);
+		ft_digitu(nb / 10);
 		n = (nb % 10) + 48;
-		write (1, &n, 1);
+		write(1, &n, 1);
 	}
 	if (nb >= 0 && nb < 10)
 	{
 		n = nb + 48;
-		write (1, &n, 1);
+		write(1, &n, 1);
 	}
 }
 
-unsigned int	ft_lenunsi(unsigned int nb)
+unsigned int	ft_lenu(unsigned int nb)
 {
 	int	i;
 
@@ -49,11 +49,11 @@ unsigned int	ft_lenunsi(unsigned int nb)
 	return (i);
 }
 
-int	ft_unsigned(unsigned int num)
+int	ft_u(unsigned int num)
 {
 	int	count;
 
-	count = ft_lenunsi(num);
-	ft_digitunsi(num);
+	count = ft_lenu(num);
+	ft_digitu(num);
 	return (count);
 }

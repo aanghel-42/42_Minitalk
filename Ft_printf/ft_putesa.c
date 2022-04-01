@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putesa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aanghel <aanghel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 21:37:15 by pcatapan          #+#    #+#             */
-/*   Updated: 2022/01/28 07:54:02 by pcatapan         ###   ########.fr       */
+/*   Created: 2022/01/29 13:58:03 by aanghel           #+#    #+#             */
+/*   Updated: 2022/02/07 23:47:17 by aanghel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_putesa(uintptr_t num)
 	int		count;
 	char	*base;
 
-	write (1, "0x", 2);
+	write(1, "0x", 2);
 	count = 2;
 	count += ft_lenesa(num);
 	base = "0123456789abcdef";
